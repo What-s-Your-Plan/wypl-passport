@@ -1,5 +1,8 @@
 package com.cdd.sangchupassport.exception;
 
+import lombok.Getter;
+
+@Getter
 public enum PassportErrorCode {
     EXPIRED_PASSPORT(400, "PASSPORT_001", "만료된 인증입니다."),
     REUSE_PASSPORT(400, "PASSPORT_002", "이미 사용된 인증입니다."),
@@ -13,17 +16,5 @@ public enum PassportErrorCode {
         this.statusCode = statusCode;
         this.errorCode = errorCode;
         this.message = message;
-    }
-
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
     }
 }
