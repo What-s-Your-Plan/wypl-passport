@@ -19,6 +19,7 @@ import java.util.Objects;
 public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
     private static final String PASSPORT_HEADER = "Sangchu-Passport";
     private final ObjectMapper mapper;
+    private final PassportValidator passportValidator;
 
 
     @Override
@@ -34,9 +35,13 @@ public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
                                   ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest,
                                   WebDataBinderFactory binderFactory) throws Exception {
-        log.info("Passport Resolver Start");
-        HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
-        String header = Objects.requireNonNull(request).getHeader(PASSPORT_HEADER);
-        return mapper.readValue(header, Passport.class);
+        Passport passport = mapper.readValue(
+                Objects.requireNonNull(
+                        webRequest.getNativeRequest(
+                                HttpServletRequest.class)
+                ).getHeader(PASSPORT_HEADER),
+                Passport.class);
+        passportValidator.validatePassword(passport);
+        return passport;
     }
 }
