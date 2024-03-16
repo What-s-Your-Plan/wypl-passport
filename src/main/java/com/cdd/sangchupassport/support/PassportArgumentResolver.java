@@ -14,11 +14,12 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import java.util.Objects;
 
 
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
     private static final String PASSPORT_HEADER = "Sangchu-Passport";
     private final ObjectMapper mapper;
+
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
