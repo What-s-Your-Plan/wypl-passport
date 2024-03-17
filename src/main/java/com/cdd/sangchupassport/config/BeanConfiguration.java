@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @RequiredArgsConstructor
 @Configuration
-public class MapperConfiguration {
+public class BeanConfiguration {
 
     @Bean
     public ObjectMapper objectMapper() {

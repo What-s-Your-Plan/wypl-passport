@@ -1,12 +1,12 @@
 package com.cdd.sangchupassport;
 
 import com.cdd.sangchupassport.token.PassportToken;
-import com.cdd.sangchupassport.token.PassportTokenRepository;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class Passport {
         return destinations.isEmpty() || !destination.equals(destinations.get(0));
     }
 
-    public void stamp(PassportTokenRepository repository) {
+    public void stamp(CrudRepository<PassportToken, String> repository) {
         destinations.remove(0);
         if (destinations.isEmpty()) {
             repository.save(PassportToken.from(id));

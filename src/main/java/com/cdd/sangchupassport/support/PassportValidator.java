@@ -3,22 +3,20 @@ package com.cdd.sangchupassport.support;
 import com.cdd.sangchupassport.Passport;
 import com.cdd.sangchupassport.exception.PassportErrorCode;
 import com.cdd.sangchupassport.exception.PassportException;
-import com.cdd.sangchupassport.token.PassportTokenRepository;
-import lombok.extern.slf4j.Slf4j;
+import com.cdd.sangchupassport.token.PassportToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-@Slf4j
 public class PassportValidator {
-    private final PassportTokenRepository repository;
+    private final CrudRepository<PassportToken, String> repository;
     private final String destination;
 
     @Autowired
     public PassportValidator(
-            PassportTokenRepository repository,
-            @Value("${spring.application.name}") String destination
+            CrudRepository<PassportToken, String> repository,
+            String destination
     ) {
         this.repository = repository;
         this.destination = destination;
