@@ -1,0 +1,22 @@
+name: Sangchu BOT 🤖
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Backend_CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository 🚚
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17 🔨
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Run Spring Boot CompileJava 🧪
+        run: ./gradlew CompileJava
