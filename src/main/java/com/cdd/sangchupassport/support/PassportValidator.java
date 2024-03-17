@@ -4,19 +4,25 @@ import com.cdd.sangchupassport.Passport;
 import com.cdd.sangchupassport.exception.PassportErrorCode;
 import com.cdd.sangchupassport.exception.PassportException;
 import com.cdd.sangchupassport.token.PassportTokenRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class PassportValidator {
     private final PassportTokenRepository repository;
+    private final String destination;
 
-    @Value("${spring.application.name}")
-    private String destination;
+    @Autowired
+    public PassportValidator(
+            PassportTokenRepository repository,
+            @Value("${spring.application.name}") String destination
+    ) {
+        this.repository = repository;
+        this.destination = destination;
+    }
 
     public void validatePassword(final Passport passport) {
         validateExpiredTime(passport);
@@ -39,7 +45,7 @@ public class PassportValidator {
     }
 
     private void validateReuse(final Passport passport) {
-        if (repository.findById(passport.getId()).isPresent()) {
+        if (repository.existsById(passport.getId())) {
             throw new PassportException(passport, PassportErrorCode.REUSE_PASSPORT);
         }
     }

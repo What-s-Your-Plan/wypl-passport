@@ -24,8 +24,7 @@ public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        log.info("Passport Argument Resolver Start");
-        boolean hasParameterAnnotation = parameter.hasParameterAnnotation(ParsePassport.class);
+        boolean hasParameterAnnotation = parameter.hasParameterAnnotation(RequestPassport.class);
         boolean assignableFrom = Passport.class.isAssignableFrom(parameter.getParameterType());
         return hasParameterAnnotation && assignableFrom;
     }

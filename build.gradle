@@ -17,8 +17,6 @@ dependencies {
     implementation 'org.springframework:spring-webmvc:6.1.5'
     implementation 'org.springframework:spring-web:6.1.5'
     compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
-    implementation 'org.aspectj:aspectjtools:1.9.21'
-    runtimeOnly 'org.aspectj:aspectjweaver:1.9.21'
 
     implementation 'org.springframework.data:spring-data-redis:3.2.4'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'

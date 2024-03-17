@@ -41,7 +41,6 @@ public class Passport {
     public void stamp(PassportTokenRepository repository) {
         destinations.remove(0);
         if (destinations.isEmpty()) {
-            log.info("\nPassport Id [{}]\nMember Id : [{}]", id, memberId);
             repository.save(PassportToken.from(id));
         }
     }
