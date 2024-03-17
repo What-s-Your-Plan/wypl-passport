@@ -4,6 +4,7 @@ import com.cdd.sangchupassport.Passport;
 import com.cdd.sangchupassport.exception.PassportErrorCode;
 import com.cdd.sangchupassport.exception.PassportException;
 import com.cdd.sangchupassport.token.PassportToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Component;
 public class PassportValidator {
     private final CrudRepository<PassportToken, String> repository;
     private final String destination;
-
     @Autowired
+    private ObjectMapper mapper;
+
     public PassportValidator(
             CrudRepository<PassportToken, String> repository,
             String destination
@@ -26,7 +28,7 @@ public class PassportValidator {
         validateExpiredTime(passport);
         validateDestination(passport);
         validateReuse(passport);
-        passport.stamp(repository);
+        passport.stamp(mapper, repository);
     }
 
     private void validateExpiredTime(final Passport passport) {

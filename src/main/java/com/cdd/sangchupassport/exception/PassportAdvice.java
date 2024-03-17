@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @RestControllerAdvice
 public class PassportAdvice {
-
     @ExceptionHandler(PassportException.class)
     public ResponseEntity<String> handleException(PassportException e) {
         log.warn("""

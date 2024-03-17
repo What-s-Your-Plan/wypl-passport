@@ -4,7 +4,6 @@ import com.cdd.sangchupassport.Passport;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -13,11 +12,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.util.Objects;
 
+import static com.cdd.sangchupassport.support.SangchuHeader.SANGCHU_PASSPORT;
+
 
 @RequiredArgsConstructor
-@Slf4j
 public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
-    private static final String PASSPORT_HEADER = "Sangchu-Passport";
     private final ObjectMapper mapper;
     private final PassportValidator passportValidator;
 
@@ -38,7 +37,7 @@ public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
                 Objects.requireNonNull(
                         webRequest.getNativeRequest(
                                 HttpServletRequest.class)
-                ).getHeader(PASSPORT_HEADER),
+                ).getHeader(SANGCHU_PASSPORT.getName()),
                 Passport.class);
         passportValidator.validatePassword(passport);
         return passport;
