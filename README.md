@@ -1,7 +1,10 @@
 # Sangchu Passport
 
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/CoffeeDrivenDevelopment/sangchu-passport/main)
+![](https://github.com/CoffeeDrivenDevelopment/sangchu-passport/actions/workflows/sangchu-passport.yml/badge.svg)
+
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue)
+
 [![](https://jitpack.io/v/CoffeeDrivenDevelopment/sangchu-passport.svg)](https://jitpack.io/#CoffeeDrivenDevelopment/sangchu-passport)
 
 해당 서비스는 `MSA`로 이루어져 있습니다. 각 서버마다 사용자인증을 하게 된다면 중복되는 코드가 많이지게 됩니다.
