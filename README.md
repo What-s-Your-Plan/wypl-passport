@@ -180,3 +180,15 @@ fun passport(@RequestPassport passport: Passport): ResponseEntity<Void> {
         .body(passport)
 }
 ```
+
+## Dependencies
+
+해당 프로젝트에서 사용하는 라이브러리의 모음입니다.
+
+- [Jakarta 6.0.0](https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api/6.0.0)
+- [Jackson Databind 2.17.0](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.17.0)
+- [Lombok 1.18.30](https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.30)
+- [Spring Data Redis 3.2.4](https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis/3.2.4)
+- [Spring WebMvc 6.1.5](https://mvnrepository.com/artifact/org.springframework/spring-webmvc/6.1.5)
+- [Spring Web 6.1.5](https://mvnrepository.com/artifact/org.springframework/spring-web/6.1.5)
+- [Slf4j Api 2.0.7](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/2.0.7)
