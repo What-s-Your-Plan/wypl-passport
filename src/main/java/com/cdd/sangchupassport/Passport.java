@@ -2,10 +2,12 @@ package com.cdd.sangchupassport;
 
 import static com.cdd.sangchupassport.support.SangchuHeader.*;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpHeaders;
 
 import com.cdd.sangchupassport.exception.PassportErrorCode;
 import com.cdd.sangchupassport.exception.PassportException;
+import com.cdd.sangchupassport.token.PassportToken;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -34,6 +36,14 @@ public class Passport {
 	private int memberId;
 	@JsonProperty("expired_time")
 	private long expiredTime;
+
+	/**
+	 * `API Gateway`에서 활용 사용한 `Passport`를 저장
+	 * @param repository Redis Repository
+	 */
+	public void stamp(CrudRepository<PassportToken, String> repository) {
+		repository.save(PassportToken.from(id));
+	}
 
 	public void makeHttpHeaders(ObjectMapper mapper) {
 		try {
