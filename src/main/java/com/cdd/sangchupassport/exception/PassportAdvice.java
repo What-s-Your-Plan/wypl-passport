@@ -9,8 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestControllerAdvice
 public class PassportAdvice {
+
 	@ExceptionHandler(PassportException.class)
-	public ResponseEntity<String> handleException(PassportException e) {
+	public ResponseEntity<String> handleException(
+		final PassportException e
+	) {
 		log.warn("""
 				Passport Exception Message  : {}
 				Passport Id                 : [{}]
@@ -19,6 +22,7 @@ public class PassportAdvice {
 			e.getMessage(),
 			e.getPassportId(),
 			e.getMemberId());
-		return ResponseEntity.status(e.getStatusCode()).body(e.getMessage());
+		return ResponseEntity.status(e.getStatusCode())
+			.body(e.getMessage());
 	}
 }

@@ -40,14 +40,18 @@ public class Passport {
 	/**
 	 * `API Gateway`에서 활용 사용한 `Passport`를 저장
 	 */
-	public void stamp(CrudRepository<PassportToken, String> repository) {
+	public void stamp(
+		final CrudRepository<PassportToken, String> repository
+	) {
 		if (repository.existsById(id)) {
 			throw new PassportException(this, PassportErrorCode.REUSE_PASSPORT);
 		}
 		repository.save(PassportToken.from(id));
 	}
 
-	public void makeHttpHeaders(ObjectMapper mapper) {
+	public void makeHttpHeaders(
+		final ObjectMapper mapper
+	) {
 		try {
 			headers.add(
 				SANGCHU_PASSPORT.getName(),

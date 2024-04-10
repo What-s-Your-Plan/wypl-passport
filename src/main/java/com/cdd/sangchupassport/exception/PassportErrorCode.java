@@ -12,7 +12,11 @@ public enum PassportErrorCode {
 	private final String errorCode;
 	private final String message;
 
-	PassportErrorCode(int statusCode, String errorCode, String message) {
+	PassportErrorCode(
+		final int statusCode,
+		final String errorCode,
+		final String message
+	) {
 		this.statusCode = statusCode;
 		this.errorCode = errorCode;
 		this.message = message;

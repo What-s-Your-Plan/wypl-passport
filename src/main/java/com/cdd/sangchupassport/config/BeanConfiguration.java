@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Configuration
 public class BeanConfiguration {
+
 	@Bean
 	public ObjectMapper objectMapper() {
 		return new ObjectMapper();

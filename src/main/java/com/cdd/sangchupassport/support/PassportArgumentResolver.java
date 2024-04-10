@@ -30,15 +30,15 @@ public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Override
 	public Object resolveArgument(MethodParameter parameter,
-			ModelAndViewContainer mavContainer,
-			NativeWebRequest webRequest,
-			WebDataBinderFactory binderFactory) throws Exception {
+		ModelAndViewContainer mavContainer,
+		NativeWebRequest webRequest,
+		WebDataBinderFactory binderFactory) throws Exception {
 		Passport passport = mapper.readValue(
-				Objects.requireNonNull(
-						webRequest.getNativeRequest(
-								HttpServletRequest.class)
-				).getHeader(SANGCHU_PASSPORT.getName()),
-				Passport.class);
+			Objects.requireNonNull(
+				webRequest.getNativeRequest(
+					HttpServletRequest.class)
+			).getHeader(SANGCHU_PASSPORT.getName()),
+			Passport.class);
 		passportValidator.validatePassport(passport);
 		passport.makeHttpHeaders(mapper);
 		return passport;
