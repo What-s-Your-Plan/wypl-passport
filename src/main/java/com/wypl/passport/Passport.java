@@ -1,17 +1,16 @@
-package com.cdd.sangchupassport;
-
-import static com.cdd.sangchupassport.support.SangchuHeader.*;
+package com.wypl.passport;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpHeaders;
 
-import com.cdd.sangchupassport.exception.PassportErrorCode;
-import com.cdd.sangchupassport.exception.PassportException;
-import com.cdd.sangchupassport.token.PassportToken;
+import com.wypl.passport.exception.PassportErrorCode;
+import com.wypl.passport.exception.PassportException;
+import com.wypl.passport.token.PassportToken;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wypl.passport.support.CustomHeaders;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -54,7 +53,7 @@ public class Passport {
 	) {
 		try {
 			headers.add(
-					SANGCHU_PASSPORT.getName(),
+					CustomHeaders.WYPL_PASSPORT.getName(),
 					mapper.writeValueAsString(this)
 			);
 		} catch (JsonProcessingException e) {

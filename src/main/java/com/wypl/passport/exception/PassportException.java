@@ -1,6 +1,6 @@
-package com.cdd.sangchupassport.exception;
+package com.wypl.passport.exception;
 
-import com.cdd.sangchupassport.Passport;
+import com.wypl.passport.Passport;
 
 import lombok.Getter;
 

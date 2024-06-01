@@ -1,4 +1,4 @@
-package com.cdd.sangchupassport.support;
+package com.wypl.passport.support;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

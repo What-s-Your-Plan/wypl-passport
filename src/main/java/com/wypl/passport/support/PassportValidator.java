@@ -1,12 +1,12 @@
-package com.cdd.sangchupassport.support;
+package com.wypl.passport.support;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import com.cdd.sangchupassport.Passport;
-import com.cdd.sangchupassport.exception.PassportErrorCode;
-import com.cdd.sangchupassport.exception.PassportException;
-import com.cdd.sangchupassport.token.PassportToken;
+import com.wypl.passport.Passport;
+import com.wypl.passport.exception.PassportErrorCode;
+import com.wypl.passport.exception.PassportException;
+import com.wypl.passport.token.PassportToken;
 
 @Component
 public class PassportValidator {

@@ -1,6 +1,4 @@
-package com.cdd.sangchupassport.support;
-
-import static com.cdd.sangchupassport.support.SangchuHeader.*;
+package com.wypl.passport.support;
 
 import java.util.Objects;
 
@@ -10,7 +8,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import com.cdd.sangchupassport.Passport;
+import com.wypl.passport.Passport;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,7 +35,7 @@ public class PassportArgumentResolver implements HandlerMethodArgumentResolver {
 			Objects.requireNonNull(
 				webRequest.getNativeRequest(
 					HttpServletRequest.class)
-			).getHeader(SANGCHU_PASSPORT.getName()),
+			).getHeader(CustomHeaders.WYPL_PASSPORT.getName()),
 			Passport.class);
 		passportValidator.validatePassport(passport);
 		passport.makeHttpHeaders(mapper);

@@ -1,4 +1,4 @@
-package com.cdd.sangchupassport.exception;
+package com.wypl.passport.exception;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.cdd.sangchupassport.token;
+package com.wypl.passport.token;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;

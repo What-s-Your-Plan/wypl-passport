@@ -1,9 +1,9 @@
-package com.cdd.sangchupassport.config;
+package com.wypl.passport.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.cdd.sangchupassport.exception.PassportAdvice;
+import com.wypl.passport.exception.PassportAdvice;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
