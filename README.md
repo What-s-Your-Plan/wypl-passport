@@ -1,11 +1,9 @@
-# Sangchu Passport
+# WYPL Passport
 
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/CoffeeDrivenDevelopment/sangchu-passport/main)
-![](https://github.com/CoffeeDrivenDevelopment/sangchu-passport/actions/workflows/sangchu-passport.yml/badge.svg)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/What-s-Your-Plan/wypl-passport/main)
+![](https://github.com/What-s-Your-Plan/wypl-passport/actions/workflows/wypl-passport.yml/badge.svg)
 
 ![GitHub License](https://img.shields.io/badge/license-MIT-blue)
-
-[![](https://jitpack.io/v/CoffeeDrivenDevelopment/sangchu-passport.svg)](https://jitpack.io/#CoffeeDrivenDevelopment/sangchu-passport)
 
 해당 서비스는 `MSA`로 이루어져 있습니다. 각 서버마다 사용자인증을 하게 된다면 중복되는 코드가 많이지게 됩니다.
 또한 각 클라이언트마다 인증 객체가 다를 수 있으므로 상추에서는 각각 다른 클라이언트의 인증 요청을 하나의 `Passport`로 묶어 서버간의 인증을 단순화 하였습니다.
@@ -80,20 +78,20 @@ interface PassportTokenRepository : CurdRepository<PassportToken, String>
 @RequiredArgsConstructor
 @Configuration
 public class PassportConfig {
-    private final PassportTokenRepository passportTokenRepository;
+	private final PassportTokenRepository passportTokenRepository;
 
-    @Value("${spring.application.name}")
-    private String name;
+	@Value("${spring.application.name}")
+	private String name;
 
-    @Bean
-    public PassportValidator passportValidator() {
-        return new PassportValidator(passportTokenRepository, name);
-    }
+	@Bean
+	public PassportValidator passportValidator() {
+		return new PassportValidator(passportTokenRepository, name);
+	}
 
-    @Bean
-    public PassportAdvice passportAdvice() {
-        return new PassportAdvice();
-    }
+	@Bean
+	public PassportAdvice passportAdvice() {
+		return new PassportAdvice();
+	}
 }
 ```
 
@@ -128,13 +126,13 @@ class PassportConfig(
 @RequiredArgsConstructor
 @Configuration
 public class PassportArgumentResolversConfig implements WebMvcConfigurer {
-    private final ObjectMapper mapper;
-    private final PassportValidator validator;
+	private final ObjectMapper mapper;
+	private final PassportValidator validator;
 
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new PassportArgumentResolver(mapper, validator));
-    }
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		resolvers.add(new PassportArgumentResolver(mapper, validator));
+	}
 }
 ```
 
@@ -167,9 +165,9 @@ class PassportArgumentResolversConfig(
 
 @GetMapping("/v1")
 public ResponseEntity<Void> passport(@RequestPassport Passport passport) {
-    return ResponseEntity.ok()
-            .headers(passport.getHeaders())
-            .body(passport);
+	return ResponseEntity.ok()
+			.headers(passport.getHeaders())
+			.body(passport);
 }
 ```
 
